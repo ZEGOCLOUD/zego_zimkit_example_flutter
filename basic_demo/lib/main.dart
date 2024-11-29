@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:bot_toast/bot_toast.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
 import 'package:zego_uikit_signaling_plugin/zego_uikit_signaling_plugin.dart';
@@ -189,21 +188,24 @@ void onUserLogin(String id, String name) {
     userName: name,
     plugins: [ZegoUIKitSignalingPlugin()],
     config: ZegoCallInvitationConfig(
-      canInvitingInCalling: true,
+      inCalling: ZegoCallInvitationInCallingConfig(
+        canInvitingInCalling: true,
+      ),
     ),
     notificationConfig: ZegoCallInvitationNotificationConfig(
       androidNotificationConfig: ZegoCallAndroidNotificationConfig(
-        /// call notification
-        channelID: 'ZegoUIKit',
-        channelName: 'Call Notifications',
-        sound: 'call',
-        icon: 'call',
-
-        /// message notification
-        messageChannelID: 'Message',
-        messageChannelName: 'Message',
-        messageSound: 'message',
-        messageIcon: 'message',
+        callChannel: ZegoCallAndroidNotificationChannelConfig(
+          channelID: 'ZegoUIKit',
+          channelName: 'Call Notifications',
+          sound: 'call',
+          icon: 'call',
+        ),
+        messageChannel: ZegoCallAndroidNotificationChannelConfig(
+          channelID: 'Message',
+          channelName: 'Message',
+          sound: 'message',
+          icon: 'message',
+        ),
       ),
     ),
     requireConfig: (ZegoCallInvitationData data) {
