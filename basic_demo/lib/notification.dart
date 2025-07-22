@@ -45,6 +45,24 @@ class NotificationManager {
           .resolvePlatformSpecificImplementation<
               AndroidFlutterLocalNotificationsPlugin>()
           ?.createNotificationChannel(channel);
+
+      Future.delayed(Duration(seconds: 3), () {
+        ZIMKit().getOfflineConversationInfo().then((offlineConversationInfo) {
+          debugPrint('1111 $offlineConversationInfo');
+          if (offlineConversationInfo.valid) {
+            navigatorKey.currentState?.push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return DemoChattingMessageListPage(
+                    conversationID: offlineConversationInfo.conversationID,
+                    conversationType: offlineConversationInfo.conversionType,
+                  );
+                },
+              ),
+            );
+          }
+        });
+      });
     }
 
     await flutterLocalNotificationsPlugin.initialize(
