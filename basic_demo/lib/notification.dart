@@ -47,7 +47,7 @@ class NotificationManager {
               AndroidFlutterLocalNotificationsPlugin>()
           ?.createNotificationChannel(channel);
 
-      Future.delayed(Duration(seconds: 3), () {
+      Future.delayed(const Duration(seconds: 3), () {
         ZIMKit().getOfflineConversationInfo().then((offlineConversationInfo) {
           debugPrint('1111 $offlineConversationInfo');
           if (offlineConversationInfo.valid) {

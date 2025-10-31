@@ -39,16 +39,21 @@ class _ZIMKitDemoHomePageState extends State<ZIMKitDemoHomePage> {
 
   Widget conversationList() {
     return ZIMKitConversationListView(
-      onPressed: (context, conversation, defaultAction) {
-        Navigator.push(context, MaterialPageRoute(
-          builder: (context) {
-            return DemoChattingMessageListPage(
-              conversationID: conversation.id,
-              conversationType: conversation.type,
-            );
-          },
-        ));
-      },
+      events: ZIMKitConversationListEvents(
+        onPressed: (context, conversation, defaultAction) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return DemoChattingMessageListPage(
+                  conversationID: conversation.id,
+                  conversationType: conversation.type,
+                );
+              },
+            ),
+          );
+        },
+      ),
     );
   }
 

@@ -31,13 +31,16 @@ void main() async {
   await ZIMKit().init(
     appID: yourAppID /*input your AppID*/,
     appSign: yourAppSign /*input your AppSign*/,
-    notificationConfig: ZegoZIMKitNotificationConfig(
-      resourceID: 'zego_data_zim',
-      androidNotificationConfig: ZegoZIMKitAndroidNotificationConfig(
-        channelID: 'ZIM Message',
-        channelName: 'Message',
-        sound: 'message',
-        icon: 'message',
+    config: ZIMKitConfig(
+      innerText: ZIMKitInnerTextZhCN(),
+      notificationConfig: ZegoZIMKitNotificationConfig(
+        resourceID: 'zego_data_zim',
+        androidNotificationConfig: ZegoZIMKitAndroidNotificationConfig(
+          channelID: 'ZIM Message',
+          channelName: 'Message',
+          sound: 'message',
+          icon: 'message',
+        ),
       ),
     ),
   );
