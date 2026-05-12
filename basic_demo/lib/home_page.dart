@@ -39,6 +39,10 @@ class _ZIMKitDemoHomePageState extends State<ZIMKitDemoHomePage> {
 
   Widget conversationList() {
     return ZIMKitConversationListView(
+      filter: (context, conversationList) {
+        // 过滤掉 lastMessage 为 null 的空会话
+        return conversationList.where((conversation) => conversation.value.lastMessage != null).toList();
+      },
       onPressed: (context, conversation, defaultAction) {
         Navigator.push(context, MaterialPageRoute(
           builder: (context) {
