@@ -1,6 +1,12 @@
 
 # ZIMKit(ZegoCloud In-App Chat UIKit)
 
+基准：Flutter 3.47.0（2026-10-13）
+
+## iOS 集成
+
+启用 Flutter Swift Package Manager 后，运行 flutter pub get 生成 Xcode 集成；不支持 SPM 的插件仍由 CocoaPods 集成。用 Xcode 打开项目时使用 ios/Runner.xcworkspace。
+
 🥳beta support:
 - Create peer-to-peer chat / Create group chat/ Join group chat
 - Send text, picture(<10M), gif(<10M), video(<100M), file(<100M)
