@@ -34,9 +34,9 @@ Future<dynamic> showDefaultGroupMemberListDialog(
     return CachedNetworkImage(
       width: 60,
       height: 60,
-      imageUrl: memberItem.memberAvatarUrl.isEmpty
+      imageUrl: memberItem.userAvatarUrl.isEmpty
           ? 'https://robohash.org/${memberItem.userID}.png?set=set4'
-          : memberItem.memberAvatarUrl,
+          : memberItem.userAvatarUrl,
       fit: BoxFit.cover,
       progressIndicatorBuilder: (__, _, ___) => CircleAvatar(
         child: Text(memberItemName[0]),

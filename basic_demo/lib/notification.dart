@@ -67,13 +67,13 @@ class NotificationManager {
     }
 
     await flutterLocalNotificationsPlugin.initialize(
-      const InitializationSettings(
+      settings: const InitializationSettings(
         android: AndroidInitializationSettings('@drawable/message'),
         iOS: DarwinInitializationSettings(
-            // requestSoundPermission: true,
-            // requestBadgePermission: false,
-            // requestAlertPermission: false,
-            ),
+          // requestSoundPermission: true,
+          // requestBadgePermission: false,
+          // requestAlertPermission: false,
+        ),
       ),
       onDidReceiveNotificationResponse: onNotificationTappedBackground,
       onDidReceiveBackgroundNotificationResponse:
@@ -97,6 +97,7 @@ class NotificationManager {
     debugPrint('cancelAllNotifications');
   }
 
+  @pragma('vm:entry-point')
   static void onNotificationTappedBackground(NotificationResponse response) {
     debugPrint('onNotificationTappedBackground ${response.payload}');
     NotificationManager().cancelAllNotifications();
@@ -138,10 +139,10 @@ class NotificationManager {
       });
 
       await flutterLocalNotificationsPlugin.show(
-        notificationID,
-        senderName,
-        content,
-        const NotificationDetails(
+        id: notificationID,
+        title: senderName,
+        body: content,
+        notificationDetails: const NotificationDetails(
           android: AndroidNotificationDetails(
             demoChannelID,
             demoChannelName,
